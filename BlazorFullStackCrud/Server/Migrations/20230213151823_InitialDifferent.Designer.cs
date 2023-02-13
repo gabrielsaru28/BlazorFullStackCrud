@@ -4,6 +4,7 @@ using BlazorFullStackCrud.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorFullStackCrud.Server.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230213151823_InitialDifferent")]
+    partial class InitialDifferent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,18 +44,13 @@ namespace BlazorFullStackCrud.Server.Migrations
                     b.HasData(
                         new
                         {
-                            AllergyId = 3,
+                            AllergyId = 1,
                             AllergyName = "Alergie la praf"
                         },
                         new
                         {
-                            AllergyId = 4,
+                            AllergyId = 2,
                             AllergyName = "Alergie la lactoza"
-                        },
-                        new
-                        {
-                            AllergyId = 5,
-                            AllergyName = "Alergie la capsuni"
                         });
                 });
 
@@ -92,7 +90,7 @@ namespace BlazorFullStackCrud.Server.Migrations
                         new
                         {
                             PatientId = 1,
-                            AllergyId = 3,
+                            AllergyId = 1,
                             MedicalHistory = "Healthy",
                             Medications = "Pastile test",
                             PatientName = "Ion"
@@ -100,18 +98,10 @@ namespace BlazorFullStackCrud.Server.Migrations
                         new
                         {
                             PatientId = 2,
-                            AllergyId = 4,
+                            AllergyId = 2,
                             MedicalHistory = "Healthy",
                             Medications = "Pastile lactoza",
                             PatientName = "John"
-                        },
-                        new
-                        {
-                            PatientId = 3,
-                            AllergyId = 5,
-                            MedicalHistory = "Very Healthy",
-                            Medications = "Pastile1212 lactoza",
-                            PatientName = "Mark"
                         });
                 });
 

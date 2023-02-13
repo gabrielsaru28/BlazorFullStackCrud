@@ -19,39 +19,48 @@ namespace BlazorFullStackCrud.Server.Controllers
             _context = context;
         }
 
-        /*
-
-        // Mock data
-        public static List<Allergies> allergies = new List<Allergies> { 
         
-            new Allergies { AllergyId = 0, AllergyName= "Alergie la praf"},
-            new Allergies { AllergyId = 1, AllergyName= "Alergie la lactoza"}
 
-        };
+        //// Mock data
+        //public static List<Allergies> allergies = new List<Allergies> { 
+        
+        //    new Allergies { AllergyId = 1, AllergyName= "Alergie la praf"},
+        //    new Allergies { AllergyId = 2, AllergyName= "Alergie la lactoza"},
+        //    new Allergies {AllergyId = 3, AllergyName = "test123"}
+        //};
 
-        // Mock data
-        public static List<HealthRecord> healthrecords = new List<HealthRecord> {
+        //// Mock data
+        //public static List<HealthRecord> healthrecords = new List<HealthRecord> {
 
-            new HealthRecord { 
-                PatientId = 0, 
-                PatientName= "Ion", 
-                MedicalHistory = "Healthy",
-                Medications = "Pastile test",
-                Allergies = allergies[0],
-                AllergyId =1
+        //    new HealthRecord { 
+        //        PatientId = 1, 
+        //        PatientName= "Ion", 
+        //        MedicalHistory = "Healthy",
+        //        Medications = "Pastile test",
+        //        Allergies = allergies[0],
+        //        AllergyId =1
 
-            },
+        //    },
 
-            new HealthRecord {
-                PatientId = 1,
-                PatientName= "John",
-                MedicalHistory = "Healthy",
-                Medications = "Pastile lactoza",
-                Allergies = allergies[1],
-                AllergyId = 2
-            },
-        };
-        */
+        //    new HealthRecord {
+        //        PatientId = 2,
+        //        PatientName= "John",
+        //        MedicalHistory = "Healthy",
+        //        Medications = "Pastile lactoza",
+        //        Allergies = allergies[1],
+        //        AllergyId = 2
+        //    },
+
+        //      new HealthRecord {
+        //        PatientId = 1,
+        //        PatientName= "Mark",
+        //        MedicalHistory = "Very Healthy",
+        //        Medications = "Pastile1212 lactoza",
+        //        Allergies = allergies[2],
+        //        AllergyId = 3
+        //    },
+        //};
+        
 
         [HttpGet]
         public async Task<ActionResult<List<HealthRecord>>> GetHealthRecords()

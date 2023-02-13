@@ -36,10 +36,12 @@
                 <td>@record.PatientName</td>
                 <td>@record.MedicalHistory</td>
                 <td>@record.Medications</td>
-                <td>@record.Allergies.AllergyName</td>
+                <td>@record.AllergyId</td>
+               
                 <td>
                     <button class="btn btn-primary" @onclick=" (() => ShowHealthRecord(record.PatientId))"><i class="oi oi-pencil"></i></button>
                 </td>
+            
             </tr>
         }
 

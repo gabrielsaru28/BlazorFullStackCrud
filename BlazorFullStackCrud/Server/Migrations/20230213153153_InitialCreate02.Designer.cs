@@ -4,6 +4,7 @@ using BlazorFullStackCrud.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorFullStackCrud.Server.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230213153153_InitialCreate02")]
+    partial class InitialCreate02
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,7 +94,7 @@ namespace BlazorFullStackCrud.Server.Migrations
                     b.HasData(
                         new
                         {
-                            PatientId = 1,
+                            PatientId = 5,
                             AllergyId = 3,
                             MedicalHistory = "Healthy",
                             Medications = "Pastile test",
@@ -99,7 +102,7 @@ namespace BlazorFullStackCrud.Server.Migrations
                         },
                         new
                         {
-                            PatientId = 2,
+                            PatientId = 6,
                             AllergyId = 4,
                             MedicalHistory = "Healthy",
                             Medications = "Pastile lactoza",
@@ -107,7 +110,7 @@ namespace BlazorFullStackCrud.Server.Migrations
                         },
                         new
                         {
-                            PatientId = 3,
+                            PatientId = 7,
                             AllergyId = 5,
                             MedicalHistory = "Very Healthy",
                             Medications = "Pastile1212 lactoza",
