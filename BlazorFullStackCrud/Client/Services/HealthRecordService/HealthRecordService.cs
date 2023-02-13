@@ -5,7 +5,9 @@ namespace BlazorFullStackCrud.Client.Services.HealthRecordService
 {
     public class HealthRecordService : IHealthRecordService
     {
+
         private readonly HttpClient _http;
+
         private readonly NavigationManager _navigationManager;
 
         public HealthRecordService(HttpClient http, NavigationManager navigationManager)
@@ -17,7 +19,9 @@ namespace BlazorFullStackCrud.Client.Services.HealthRecordService
         public List<HealthRecord> Records { get; set; } = new List<HealthRecord>();
         
         public List<Allergies> Allergies { get; set; } = new List<Allergies>();
+
         public HttpClient Http { get; }
+
 
         public async Task CreateRecord(HealthRecord record)
         {
@@ -26,12 +30,14 @@ namespace BlazorFullStackCrud.Client.Services.HealthRecordService
             await SetRecords(result);
         }
 
+
         private async Task SetRecords(HttpResponseMessage result)
         {
             var response = await result.Content.ReadFromJsonAsync<List<HealthRecord>>();
             Records = response;
-            _navigationManager.NavigateTo("healthrecord");
+            _navigationManager.NavigateTo("healthrecords");
         }
+
 
         public async Task DeleteRecord(int id)
         {
@@ -40,6 +46,7 @@ namespace BlazorFullStackCrud.Client.Services.HealthRecordService
            // var response = await result.Content.ReadFromJsonAsync<List<HealthRecord>>();
             await SetRecords(result);
         }
+
 
         public async Task GetAllergies()
         {
@@ -68,7 +75,7 @@ namespace BlazorFullStackCrud.Client.Services.HealthRecordService
         public async Task UpdateRecord(HealthRecord record)
         {
             // result is an HttpResponseMessage ( we do not get the list of the healthrecords directly)
-            var result = await _http.PutAsJsonAsync($"api/healthrecord{record.PatientId}", record);
+            var result = await _http.PutAsJsonAsync($"api/healthrecord/ {record.PatientId}", record);
             //var response = await result.Content.ReadFromJsonAsync<List<HealthRecord>>();
             await SetRecords(result);
         }
