@@ -19,8 +19,8 @@
         {
             modelBuilder.Entity<Allergies>().HasData(
 
-                 new Allergies { AllergyId = 0, AllergyName = "Alergie la praf" },
-                 new Allergies { AllergyId = 1, AllergyName = "Alergie la lactoza" }
+                 new Allergies { AllergyId = 1, AllergyName = "Alergie la praf" },
+                 new Allergies { AllergyId = 2, AllergyName = "Alergie la lactoza" }
 
                 );
 
@@ -29,7 +29,7 @@
 
                 new HealthRecord
                 {
-                    PatientId = 0,
+                    PatientId = 1,
                     PatientName = "Ion",
                     MedicalHistory = "Healthy",
                     Medications = "Pastile test",
@@ -39,7 +39,7 @@
 
                 new HealthRecord
                 {
-                    PatientId = 1,
+                    PatientId = 2,
                     PatientName = "John",
                     MedicalHistory = "Healthy",
                     Medications = "Pastile lactoza",

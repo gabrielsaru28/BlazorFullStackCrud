@@ -10,6 +10,7 @@ namespace BlazorFullStackCrud.Shared
 {
     public class Allergies
     {
+        [Key]
         public int AllergyId { get; set; }
         public string AllergyName { get; set; } = string.Empty;
     }

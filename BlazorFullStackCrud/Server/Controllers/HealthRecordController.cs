@@ -19,7 +19,7 @@ namespace BlazorFullStackCrud.Server.Controllers
             _context = context;
         }
 
-
+        /*
 
         // Mock data
         public static List<Allergies> allergies = new List<Allergies> { 
@@ -51,7 +51,7 @@ namespace BlazorFullStackCrud.Server.Controllers
                 AllergyId = 2
             },
         };
-
+        */
 
         [HttpGet]
         public async Task<ActionResult<List<HealthRecord>>> GetHealthRecords()
