@@ -1,0 +1,69 @@
+﻿@page "/healthrecords"
+
+@*   Registered and Injected our HealthRecordService      *@
+@inject IHealthRecordService HealthRecordService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Health Records</PageTitle>
+
+<h3>Health Records</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Patient Id</th>
+            <th>Patient Name</th>
+            <th>Medical History</th>
+            <th>Medications</th>
+            <th>Allergies</th>
+
+            @* For the button to edit or show  *@
+            <th></th>
+
+        </tr>
+    </thead>
+    
+    <tbody>
+        @* 
+        For each loop where we would acces
+        the HealthRecords form the WebAPI
+        
+        *@
+        @foreach(var record in HealthRecordService.Records)
+        {
+            <tr>
+                <td>@record.PatientId</td>
+                <td>@record.PatientName</td>
+                <td>@record.MedicalHistory</td>
+                <td>@record.Medications</td>
+                <td>@record.Allergies.AllergyName</td>
+                <td>
+                    <button class="btn btn-primary" @onclick=" (() => ShowHealthRecord(record.PatientId))"><i class="oi oi-pencil"></i></button>
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+
+</table>
+<button class="btn btn-primary" @onclick="CreateNewRecord">Create New Record</button>
+
+
+@code {
+    // We use the 
+    protected override async Task OnInitializedAsync()
+    {
+        await HealthRecordService.GetHealthRecords();        
+    }
+
+    void ShowHealthRecord(int id)
+    {
+        NavigationManager.NavigateTo($"record/{id}");
+    }
+
+    void CreateNewRecord()
+    {
+        NavigationManager.NavigateTo("record");
+    }
+}
