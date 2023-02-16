@@ -2,15 +2,27 @@
 {
     public class Blockchain
     {
+        /*
+         Chain stores a list of blocks
+         */
         public List<Block> Chain { get; set; }
 
         public Blockchain()
         {
             Chain = new List<Block>();
             CreateGenesisBlock();
-
         }
 
+        /*
+         * CreateGenesisBlock method 
+         *
+         * Creates a new Block object with an index of 0, a timestamp of the current date and time, a null PreviousHash value, and a data value of "Genesis Block". 
+         * 
+         * This block is then added to the Chain property using the AddBlock method. 
+         * 
+         * In this way, the first block in the blockchain, also known as the "genesis block", is created when the Blockchain object is instantiated.
+         *         
+         */
         public void CreateGenesisBlock()
         {
             // Code to create the first block in the blockchain
@@ -18,6 +30,12 @@
             AddBlock(genesisBlock);
         }
 
+
+        /*
+         * GetLatestBlock method 
+         * 
+         * Returns the latest block in the chain.
+         */
         public Block GetLatestBlock()
         {
             // Code to return the latest block in the blockchain
@@ -25,6 +43,12 @@
 
         }
 
+
+        /*
+         * AddBlock method 
+         * 
+         * Takes a Block object as an argument and adds it to the end of the chain, setting the PreviousHash of the new block to the Hash of the previous block.
+         */
         public void AddBlock(Block block)
         {
             // Code to add a new block to the blockchain
@@ -37,6 +61,12 @@
             Chain.Add(block);
         }
 
+
+        /*
+         * IsValid method 
+         * 
+         * Checks if the blockchain is valid by verifying the hash values and the PreviousHash values of each block in the chain.
+         */
         public bool IsValid()
         {
             // Code to validate the blockchain

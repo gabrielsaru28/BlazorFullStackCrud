@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlazorFullStackCrud.Shared
 {
+
     public class Transaction
     {
         public string? FromAddress { get; set; }
