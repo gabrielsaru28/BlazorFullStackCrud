@@ -19,9 +19,9 @@
         {
             modelBuilder.Entity<Allergies>().HasData(
 
-                 new Allergies { AllergyId = 3, AllergyName = "Alergie la praf" },
-                 new Allergies { AllergyId = 4, AllergyName = "Alergie la lactoza" },
-                 new Allergies { AllergyId = 5, AllergyName = "Alergie la capsuni"}
+                 new Allergies { AllergyId = 1, AllergyName = "Alergie la praf" },
+                 new Allergies { AllergyId = 2, AllergyName = "Alergie la lactoza" },
+                 new Allergies { AllergyId = 3, AllergyName = "Alergie la capsuni"}
                 );
 
 
@@ -33,7 +33,7 @@
                     PatientName = "Ion",
                     MedicalHistory = "Healthy",
                     Medications = "Pastile test",
-                    AllergyId = 3
+                    AllergyId = 1
 
                 },
 
@@ -43,7 +43,7 @@
                     PatientName = "John",
                     MedicalHistory = "Healthy",
                     Medications = "Pastile lactoza",
-                    AllergyId = 4
+                    AllergyId = 2
                 },
 
                 new HealthRecord
@@ -52,7 +52,7 @@
                     PatientName = "Mark",
                     MedicalHistory = "Very Healthy",
                     Medications = "Pastile1212 lactoza",
-                    AllergyId = 5
+                    AllergyId = 3
                 }
                  );
 
