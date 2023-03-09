@@ -106,5 +106,5 @@ namespace BlazorFullStackCrud.Client.Services.HealthRecordService
             //var response = await result.Content.ReadFromJsonAsync<List<HealthRecord>>();
             await SetRecords(result);
         }
-    }
+    }   
 }
