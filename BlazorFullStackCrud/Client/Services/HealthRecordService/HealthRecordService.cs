@@ -22,6 +22,7 @@ namespace BlazorFullStackCrud.Client.Services.HealthRecordService
 
         public HttpClient Http { get; }
 
+        public Allergies AllergyName { get; set; }
 
         public async Task CreateRecord(HealthRecord record)
         {
@@ -55,6 +56,32 @@ namespace BlazorFullStackCrud.Client.Services.HealthRecordService
                 Allergies = result;
 
         }
+
+        
+        public async Task<Allergies> GetAllergyById(int id)
+        {
+            var result = await _http.GetFromJsonAsync<Allergies>($"api/healthrecord/allergies/{id}");
+            if (result != null)
+            {
+                AllergyName = result;
+                
+            }
+            throw new Exception("Allergies not found!");
+        }
+
+
+        //public async string GetAllergyName(int id)
+        //{
+
+        //    var result =  await _http.GetFromJsonAsync<Allergies>($"api/healthrecord/allergies/{id}");
+        //    if (result != null)
+        //    {
+        //        return result.AllergyName;
+        //    }
+        //    throw new Exception("Allergies not found!");
+
+
+        //}
 
         public async Task GetHealthRecords()
         {

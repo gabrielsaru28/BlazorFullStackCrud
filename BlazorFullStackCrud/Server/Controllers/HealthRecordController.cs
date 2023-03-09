@@ -66,7 +66,10 @@ namespace BlazorFullStackCrud.Server.Controllers
         public async Task<ActionResult<List<HealthRecord>>> GetHealthRecords()
         {
             // Retrieve data from database
-            var healthrecords = await _context.HealthRecords.ToListAsync();
+            var healthrecords = await _context
+                .HealthRecords
+                .Include( a =>  a.Allergies)
+                .ToListAsync();
             
             // return status code 200
             return Ok(healthrecords);
@@ -83,12 +86,23 @@ namespace BlazorFullStackCrud.Server.Controllers
             return Ok(allergies);
         }
 
+        [HttpGet("allergies/{id}")]
+        public async Task<ActionResult<List<Allergies>>> GetAllergyById(int id)
+        {
+
+            var allergies = await _context.Allergies
+                .FirstOrDefaultAsync(a => a.AllergyId == id);
+
+            // return status code 200
+            return Ok(allergies);
+        }
+
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<HealthRecord>> GetSingeHealthRecord(int id)
         {
             var record = await _context.HealthRecords
-                .Include(h => h.Allergies)
                 .FirstOrDefaultAsync( h => h.PatientId == id);
            
             if (record == null)
@@ -108,7 +122,7 @@ namespace BlazorFullStackCrud.Server.Controllers
         [HttpPost]
         public async Task<ActionResult<List<HealthRecord>>> CreateHealthRecord(HealthRecord record)
         {
-            record.Allergies = null;
+            //record.Allergies = null;
             _context.HealthRecords.Add(record);
             await _context.SaveChangesAsync();
 

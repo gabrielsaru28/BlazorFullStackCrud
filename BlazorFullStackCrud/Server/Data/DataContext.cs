@@ -17,6 +17,12 @@
         // To see the data, we 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<HealthRecord>()
+                .HasOne<Allergies>(hr => hr.Allergies)
+                .WithMany(a => a.HealthRecords)
+                .HasForeignKey(hr => hr.AllergyId); 
+
             modelBuilder.Entity<Allergies>().HasData(
 
                  new Allergies { AllergyId = 1, AllergyName = "Alergie la praf" },

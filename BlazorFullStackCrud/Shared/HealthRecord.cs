@@ -18,9 +18,9 @@ namespace BlazorFullStackCrud.Shared
 
         public string Medications { get; set; } = string.Empty;
 
-        public Allergies? Allergies { get; set; }
-
         public int AllergyId { get; set; }
+
+        public Allergies Allergies { get; set; } = null!;
 
     }
 }

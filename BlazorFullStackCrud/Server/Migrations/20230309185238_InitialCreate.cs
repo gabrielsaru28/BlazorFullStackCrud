@@ -7,7 +7,7 @@
 namespace BlazorFullStackCrud.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,17 +34,17 @@ namespace BlazorFullStackCrud.Server.Migrations
                     PatientName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MedicalHistory = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Medications = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AllergiesAllergyId = table.Column<int>(type: "int", nullable: true),
                     AllergyId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_HealthRecords", x => x.PatientId);
                     table.ForeignKey(
-                        name: "FK_HealthRecords_Allergies_AllergiesAllergyId",
-                        column: x => x.AllergiesAllergyId,
+                        name: "FK_HealthRecords_Allergies_AllergyId",
+                        column: x => x.AllergyId,
                         principalTable: "Allergies",
-                        principalColumn: "AllergyId");
+                        principalColumn: "AllergyId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -53,22 +53,24 @@ namespace BlazorFullStackCrud.Server.Migrations
                 values: new object[,]
                 {
                     { 1, "Alergie la praf" },
-                    { 2, "Alergie la lactoza" }
+                    { 2, "Alergie la lactoza" },
+                    { 3, "Alergie la capsuni" }
                 });
 
             migrationBuilder.InsertData(
                 table: "HealthRecords",
-                columns: new[] { "PatientId", "AllergiesAllergyId", "AllergyId", "MedicalHistory", "Medications", "PatientName" },
+                columns: new[] { "PatientId", "AllergyId", "MedicalHistory", "Medications", "PatientName" },
                 values: new object[,]
                 {
-                    { 1, null, 1, "Healthy", "Pastile test", "Ion" },
-                    { 2, null, 2, "Healthy", "Pastile lactoza", "John" }
+                    { 1, 1, "Healthy", "Pastile test", "Ion" },
+                    { 2, 2, "Healthy", "Pastile lactoza", "John" },
+                    { 3, 3, "Very Healthy", "Pastile1212 lactoza", "Mark" }
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_HealthRecords_AllergiesAllergyId",
+                name: "IX_HealthRecords_AllergyId",
                 table: "HealthRecords",
-                column: "AllergiesAllergyId");
+                column: "AllergyId");
         }
 
         /// <inheritdoc />

@@ -2,12 +2,22 @@ global using BlazorFullStackCrud.Shared;
 global using Microsoft.EntityFrameworkCore;
 global using BlazorFullStackCrud.Server.Data;
 using Microsoft.AspNetCore.ResponseCompression;
+using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+
+
+
 builder.Services.AddRazorPages();
 
 // We register this 
